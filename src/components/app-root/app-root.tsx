@@ -9,8 +9,15 @@ export class AppRoot {
     return (
       <ion-app>
         <ion-router useHash={false}>
-          <ion-route url="/" component="app-home" />
-          <ion-route url="/profile/:name" component="app-profile" />
+
+          <ion-route component="app-tabs">
+            <ion-route url="/" component="tab-home" >
+              <ion-route  component="app-home" ></ion-route>
+            </ion-route>
+            <ion-route url="/profile" component="tab-profile">
+              <ion-route component="app-profile"></ion-route>
+            </ion-route>
+          </ion-route>
         </ion-router>
         <ion-menu contentId="menu" side="start">
           <ion-header>
@@ -20,7 +27,7 @@ export class AppRoot {
           </ion-header>
           <ion-content>
             <ion-list>
-              <ion-menu-toggle autoHide={ false}>
+              <ion-menu-toggle autoHide={false}>
                 <ion-item button>Some page</ion-item>
               </ion-menu-toggle>
               <ion-item>Menu Item</ion-item>
@@ -31,7 +38,7 @@ export class AppRoot {
             </ion-list>
           </ion-content>
         </ion-menu>
-        <ion-nav id="menu"/>
+        <ion-nav id="menu" />
       </ion-app>
     );
   }
